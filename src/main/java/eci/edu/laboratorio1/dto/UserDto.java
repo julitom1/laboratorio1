@@ -6,6 +6,10 @@ public class UserDto {
     private String email;
     private String lastName;
     private String created;
+    
+    public UserDto() {
+    	
+    }
 	public String getName() {
 		return name;
 	}

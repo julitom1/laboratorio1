@@ -44,12 +44,12 @@ public class UserController {
     	try {
     		User usuario=new User(userDto.getName(),userDto.getEmail(),userDto.getLastName(),userDto.getCreated());
     
-           return new ResponseEntity<>(usuario,HttpStatus.ACCEPTED);
+           return new ResponseEntity<>(userService.create(usuario),HttpStatus.ACCEPTED);
         }catch(Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    @PutMapping("{/id}")
+    @PutMapping("/{id}")
     public ResponseEntity<User> update(@RequestBody UserDto userDto, @PathVariable String id){
     	try {
     		User usuario=new User(userDto.getName(),userDto.getEmail(),userDto.getLastName(),userDto.getCreated());
@@ -59,7 +59,7 @@ public class UserController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-    @DeleteMapping
+    @DeleteMapping("/{id}")
     public ResponseEntity<Boolean> delete(@PathVariable String id){
     	try {
     		userService.deleteById(id);

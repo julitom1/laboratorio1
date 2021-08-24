@@ -14,7 +14,7 @@ public class MemoryUserService implements UserService {
     private static final ConcurrentHashMap<String,User> usuarios = new ConcurrentHashMap<>();
     @Override
     public User create(User user) {
-        user.setId(generarId());
+    	user.setId(generarId());
         usuarios.put(user.getId(),user);
         return user;
     }
