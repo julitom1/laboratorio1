@@ -78,3 +78,7 @@
 #### Control Errores delete() 
 
 ![](img/postman13.JPG)
+
+# Punto 2 del laboratorio
+
+https://github.com/julitom1/labTask
