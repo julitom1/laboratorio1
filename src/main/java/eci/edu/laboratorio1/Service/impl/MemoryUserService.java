@@ -3,13 +3,15 @@ package eci.edu.laboratorio1.Service.impl;
 import eci.edu.laboratorio1.Service.UserService;
 import eci.edu.laboratorio1.Service.usersNotFoundException;
 import eci.edu.laboratorio1.data.User;
-import edu.escuelaing.task.service.TaskServiceNotFoundException;
+
 
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
+import java.time.LocalDate;
 
 @Service
 public class MemoryUserService implements UserService {
@@ -18,6 +20,8 @@ public class MemoryUserService implements UserService {
     @Override
     public User create(User user) {
     	user.setId(generarId());
+    	LocalDate date=LocalDate.now();
+    	user.setCreated(date);
         usuarios.put(user.getId(),user);
         return user;
     }
@@ -53,6 +57,8 @@ public class MemoryUserService implements UserService {
 
     @Override
     public User update(User user, String userId) throws usersNotFoundException {
+    	user.setId(userId);
+    	user.setCreated(findById(userId).getCreated());
     	if(usuarios.containsKey(userId)) {
     		usuarios.put(userId,user);
     	}else {

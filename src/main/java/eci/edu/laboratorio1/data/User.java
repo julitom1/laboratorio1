@@ -1,18 +1,21 @@
 package eci.edu.laboratorio1.data;
 
+
+import java.time.LocalDate;
+
 public class User {
 
     private String id;
     private String name;
     private String email;
     private String lastName;
-    private String created;
+    private LocalDate createdAt;
     
-    public User(String name,String email, String lastName,String created) {
+    public User(String name,String email, String lastName) {
     	this.name=name;
     	this.email=email;
     	this.lastName=lastName;
-    	this.created=created;
+
     }
 
     public String getId() {
@@ -47,11 +50,13 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String isCreated() {
-        return created;
-    }
+	public LocalDate getCreated() {
+		return createdAt;
+	}
 
-    public void setCreated(String created) {
-        this.created = created;
-    }
+	public void setCreated(LocalDate created) {
+		this.createdAt = created;
+	}
+
+   
 }

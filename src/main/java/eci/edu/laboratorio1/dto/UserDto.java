@@ -5,7 +5,7 @@ public class UserDto {
     private String name;
     private String email;
     private String lastName;
-    private String created;
+
     
     public UserDto() {
     	
@@ -28,11 +28,6 @@ public class UserDto {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getCreated() {
-		return created;
-	}
-	public void setCreated(String created) {
-		this.created = created;
-	}
+
     
 }

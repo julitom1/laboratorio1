@@ -42,7 +42,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<User> create(@RequestBody UserDto userDto){
     	try {
-    		User usuario=new User(userDto.getName(),userDto.getEmail(),userDto.getLastName(),userDto.getCreated());
+    		User usuario=new User(userDto.getName(),userDto.getEmail(),userDto.getLastName());
     
            return new ResponseEntity<>(userService.create(usuario),HttpStatus.ACCEPTED);
         }catch(Exception e) {
@@ -52,7 +52,7 @@ public class UserController {
     @PutMapping("/{id}")
     public ResponseEntity<User> update(@RequestBody UserDto userDto, @PathVariable String id){
     	try {
-    		User usuario=new User(userDto.getName(),userDto.getEmail(),userDto.getLastName(),userDto.getCreated());
+    		User usuario=new User(userDto.getName(),userDto.getEmail(),userDto.getLastName());
     		usuario.setId(id);
             return new ResponseEntity<>(userService.update(usuario, id),HttpStatus.ACCEPTED);
         }catch(Exception e) {
