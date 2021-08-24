@@ -8,13 +8,13 @@ public interface UserService {
 
     User create(User user);
 
-    User findById(String id);
+    User findById(String id) throws usersNotFoundException;
 
     List<User> all();
 
-    void deleteById(String id);
+    void deleteById(String id) throws usersNotFoundException;
 
-    User update (User user, String userId);
+    User update (User user, String userId) throws usersNotFoundException;
 
 	
 }

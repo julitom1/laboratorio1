@@ -1,7 +1,10 @@
 package eci.edu.laboratorio1.Service.impl;
 
 import eci.edu.laboratorio1.Service.UserService;
+import eci.edu.laboratorio1.Service.usersNotFoundException;
 import eci.edu.laboratorio1.data.User;
+import edu.escuelaing.task.service.TaskServiceNotFoundException;
+
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -20,11 +23,13 @@ public class MemoryUserService implements UserService {
     }
 
     @Override
-    public User findById(String id) {
+    public User findById(String id) throws usersNotFoundException {
         User usuario=null;
         if(usuarios.containsKey(id)){
             usuario=usuarios.get(id);
-        }
+        }else {
+			throw new usersNotFoundException("Not found user with id: "+id);
+		}
         return usuario;
     }
 
@@ -38,15 +43,22 @@ public class MemoryUserService implements UserService {
     }
 
     @Override
-    public void deleteById(String id) {
+    public void deleteById(String id) throws usersNotFoundException {
     	if(usuarios.containsKey(id)) {
     		usuarios.remove(id);
-    	}
+    	}else {
+			throw new usersNotFoundException("Not found user with id: "+id);
+		}
     }
 
     @Override
-    public User update(User user, String userId) {
-        usuarios.put(userId,user);
+    public User update(User user, String userId) throws usersNotFoundException {
+    	if(usuarios.containsKey(userId)) {
+    		usuarios.put(userId,user);
+    	}else {
+			throw new usersNotFoundException("Not found user with id: "+userId);
+		}
+        
         return user;
     }
     
